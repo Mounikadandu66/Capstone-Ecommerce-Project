@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Creative Product Listing</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f3e7ff, #fbeaff);
+      padding: 50px 15px;
+      display: flex;
+      justify-content: center;
+      background-image: url("https://static.vecteezy.com/system/resources/thumbnails/010/803/399/small/background-with-colorful-shopping-bags-illustration-sale-and-discount-concept-vector.jpg");
+      background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #222;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 999;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 22px;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #f5b041;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      max-width: 1000px;
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 0 30px rgba(163, 52, 255, 0.2);
+      animation: fadeIn 1s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+      margin-top: 100px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #5f0090;
+      font-size: 2.2rem;
+      text-shadow: 1px 1px #e0c9f8;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    select {
+      padding: 10px 16px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background: #f6f2ff;
+      cursor: pointer;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .product-card {
+      background: #fff0ff;
+      border-radius: 14px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .product-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 20px rgba(140, 0, 255, 0.1);
+    }
+
+    .product-card img {
+      width: 100%;
+      max-width: 220px;
+      height: 220px;
+      object-fit: contain;
+      border-radius: 10px;
+      margin: 0 auto 12px;
+      display: block;
+    }
+
+    .product-name {
+      font-weight: 600;
+      margin-bottom: 5px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .product-price {
+      color: #a000cc;
+      font-size: 17px;
+      margin: 4px 0;
+    }
+
+    .product-rating {
+      color: #f39c12;
+    }
+
+    .add-btn {
+      margin-top: 10px;
+      background-color: #8c00ff;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .add-btn:hover {
+      background-color: #a34de6;
+    }
+
+    @media (max-width: 600px) {
+      .controls {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .back-link a {
+      background-color: #2587bf;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+    }
+
+    .back-link a:hover {
+      background-color: #3fb0d2;
+    }
+
+    .cart-counter {
+      text-align: right;
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: #5f0090;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Shop Ease</div>
+    <nav>
+      <ul>
+        <li><a href="Task.html">Home</a></li>
+        <li><a href="products.html" class="active">Products</a></li>
+        <li><a href="cart.html">Cart (<span id="cart-count">0</span>)</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Explore Your Favorites</h1>
+    <br>
+    <div class="controls">
+      <select id="categoryFilter">
+        <option value="All">All Categories</option>
+        <option value="Electronics">Smart Phones</option>
+        <option value="Watches">Watches</option>
+        <option value="Goggles">Goggles</option>
+      </select>
+
+      <select id="sortFilter">
+        <option value="default">Sort by</option>
+        <option value="priceLow">Price: Low to High</option>
+        <option value="priceHigh">Price: High to Low</option>
+      </select>
+      <div class="cart-counter">Cart Items: <span id="cartCount">0</span></div>
+    </div>
+
+    <div class="products" id="productContainer"></div>
+
+    
+  </div>
+
+  <script>
+    const products = [
+      { name: "Realme C11", category: "Electronics", price: 79999, rating: 4.8, image: "https://phonesstorekenya.com/wp-content/uploads/2021/06/Realme-C11-2021.jpg" },
+      { name: "Fastrack Watch", category: "Watches", price: 12999, rating: 4.5, image: "https://www.fastrack.in/dw/image/v2/BKDD_PRD/on/demandware.static/-/Sites-titan-master-catalog/default/dw27ed2d93/images/Fastrack/Catalog/6267SM02_1.jpg?sw=800&sh=800" },
+      { name: "Ray-Ban Goggles", category: "Goggles", price: 8999, rating: 4.6, image: "https://i.ebayimg.com/images/g/~JkAAOSwbMxkAo7U/s-l1200.png" },
+      { name: "Vivo Y100", category: "Electronics", price: 56999, rating: 4.4, image: "https://m.media-amazon.com/images/I/610cjhPdq3L._AC_UF1000,1000_QL80_.jpg" },
+      { name: "Armani Watch", category: "Watches", price: 3499, rating: 4.3, image: "https://zimsonwatches.com/cdn/shop/files/AR70009.jpg?v=1707908566" }
+      
+    ];
+
+    const productContainer = document.getElementById("productContainer");
+    const categoryFilter = document.getElementById("categoryFilter");
+    const sortFilter = document.getElementById("sortFilter");
+    const cartCount = document.getElementById("cartCount");
+    const cartCountNav = document.getElementById("cart-count");
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cartCount.textContent = cart.length;
+      cartCountNav.textContent = cart.length;
+    }
+
+    function addToCart(product) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push(product);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartCount();
+      alert(`"${product.name}" added to cart!`);
+    }
+
+    function displayProducts(items) {
+      productContainer.innerHTML = "";
+      if (items.length === 0) {
+        productContainer.innerHTML = "<p>No products found for this filter.</p>";
+        return;
+      }
+
+      items.forEach(product => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+          <img src="${product.image}" alt="${product.name}" />
+          <div class="product-name">${product.name}</div>
+          <div class="product-price">₹${product.price.toLocaleString()}</div>
+          <div class="product-rating">⭐ ${product.rating}</div>
+          <button class="add-btn">Add to Cart</button>
+        `;
+        card.querySelector(".add-btn").addEventListener("click", () => addToCart(product));
+        productContainer.appendChild(card);
+      });
+    }
+
+    function applyFilters() {
+      let filtered = [...products];
+      const category = categoryFilter.value;
+      if (category !== "All") {
+        filtered = filtered.filter(p => p.category === category);
+      }
+
+      const sortBy = sortFilter.value;
+      if (sortBy === "priceLow") {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (sortBy === "priceHigh") {
+        filtered.sort((a, b) => b.price - a.price);
+      }
+
+      displayProducts(filtered);
+    }
+
+    // Initial setup
+    window.addEventListener("DOMContentLoaded", () => {
+      updateCartCount();
+      applyFilters();
+    });
+
+    categoryFilter.addEventListener("change", applyFilters);
+    sortFilter.addEventListener("change", applyFilters);
+  </script>
+</body>
+</html>

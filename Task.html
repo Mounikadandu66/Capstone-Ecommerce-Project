@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome | Mounika's E-Store</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fed5d5;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      color: #333;
+      
+    }
+
+    header {
+      background: linear-gradient(to right, #1a2a6c, #d02828, #fbc248);
+      color: white;
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: linear-gradient(120deg, #1d2b64, #f8cdda);
+  background-size: 200% auto;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+nav ul li a:hover {
+  background-position: right center; /* smooth gradient animation */
+  color: #000;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      max-height: 650px;
+      margin-bottom: 2rem;
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 0.9s ease-in-out;
+    }
+
+    .carousel img {
+      width: 100%;
+      flex: 0 0 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 0.7rem 1rem;
+      font-size: 1.8rem;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 2;
+    }
+
+    .prev:hover, .next:hover {
+      background-color: #fdbb2d;
+      color: #111;
+    }
+
+    .prev { left: 20px; }
+    .next { right: 20px; }
+
+    .hero {
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #222;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+    }
+
+    .btn {
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.8rem;
+      background: linear-gradient(to right, #f7220b, #ffb109);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: linear-gradient(to right, #ff512f, #dd2476);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      
+    }
+
+    .container h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+
+    .flex-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.8rem;
+      margin-top: 1rem;
+    }
+
+    .card {
+      background: linear-gradient(to bottom right, #ffffff, #f1f1f1);
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      color: #d35400;
+      margin-bottom: 0.8rem;
+    }
+
+    .card p {
+      font-size: 1.05rem;
+      color: #555;
+    }
+
+    footer {
+      margin-top: auto;
+      background: linear-gradient(to right, #000046, #1cb5e0);
+      color: white;
+      text-align: center;
+      padding: 1.2rem;
+      font-size: 1rem;
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Shop Ease</div>
+  <nav>
+    <ul>
+      <li><a href="Task.html">Home</a></li>
+      <li><a href="products.html">Explore Products</a></li>
+      <li><a href="cart.html">Cart (<span id="cart-count">0</span>)</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Discover Your Style, Shop with Confidence</h1>
+  <p>Welcome to your favourite E-Store — where shopping meets simplicity and style.</p><br>
+  <a href="products.html" class="btn">Start Exploring</a>
+</section>
+
+<section class="carousel-container">
+  <div class="carousel" id="carouselSlides">
+    <img loading="lazy" src="https://dynamic.brandcrowd.com/template/preview/design/25fc638d-f32e-4fc4-b4cc-2a4dac23b74a?v=4&designTemplateVersion=1&size=design-preview-standalone-1x" alt="Fashion Banner">
+    <img loading="lazy" src="https://www.adr.it/documents/17615/6537640/PickUponReturn_Quantit%C3%A0_Header_1280x438_EN_230519_01.jpg" alt="Shopping Banner">
+    <img loading="lazy" src="https://png.pngtree.com/background/20231101/original/pngtree-obtain-discount-code-with-credit-card-payment-3d-illustration-of-shopping-picture-image_5829428.jpg" alt="Electronics Banner">
+  </div>
+  <button class="prev" onclick="prevSlide()">❮</button>
+  <button class="next" onclick="nextSlide()">❯</button>
+</section>
+
+<section class="container">
+  <h2>Why Shop With Us?</h2>
+  <div class="flex-grid">
+    <div class="card">
+      <h3>🌟 Top Quality</h3>
+      <p>Handpicked, verified, and best-in-class products for every category.</p>
+    </div>
+    <div class="card">
+      <h3>🚚 Fast Delivery</h3>
+      <p>Lightning-fast and hassle-free delivery across India.</p>
+    </div>
+    <div class="card">
+      <h3>🔒 Safe Payments</h3>
+      <p>100% secure transactions with trusted payment gateways.</p>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <h2>Customer Reviews</h2>
+  <div class="flex-grid">
+    <div class="card">
+      <p>“Loved the quality and service!”<br>– <strong>Mona</strong></p>
+    </div>
+    <div class="card">
+      <p>“Quick delivery and easy checkout.”<br>– <strong>Hari</strong></p>
+    </div>
+    <div class="card">
+      <p>“Great customer support & smooth shopping!”<br>– <strong>Rushi</strong></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Dandu Mounika. All rights reserved | Designed with ❤️ to make your shopping better.</p>
+</footer>
+
+<script>
+  document.getElementById("cart-count").textContent =
+    (JSON.parse(localStorage.getItem("cart")) || []).length;
+
+  let currentIndex = 0;
+  const slides = document.getElementById('carouselSlides');
+  const totalSlides = slides.children.length;
+
+  function showSlide(index) {
+    if (index >= totalSlides) currentIndex = 0;
+    else if (index < 0) currentIndex = totalSlides - 1;
+    else currentIndex = index;
+
+    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  function nextSlide() {
+    showSlide(currentIndex + 1);
+  }
+
+  function prevSlide() {
+    showSlide(currentIndex - 1);
+  }
+
+  setInterval(() => {
+    nextSlide();
+  }, 4000);
+</script>
+
+</body>
+</html>
